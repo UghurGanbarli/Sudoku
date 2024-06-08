@@ -14,7 +14,7 @@ console.log(containerDiv)
 
 $(document).ready(function() {
     $('#controls .btn').click(function() {
-        
+        $(this).css('display','none')
         $('.select').css('display', 'flex');
         x = true
     });
@@ -508,6 +508,7 @@ const click = () => {
             $(document).ready(function() {
                 $('.container').css('display', 'none')
                 $('#controls').css('display', 'flex');
+                $('#controls .btn').css('display', 'flex');
                 healt = 0
             })
             
