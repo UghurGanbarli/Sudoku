@@ -7,14 +7,14 @@ let difficulty ;
 let clasarr = ['left','mid','right']
 
 
-
+let zamanId
 
 
 console.log(containerDiv)
 
 $(document).ready(function() {
     $('#controls .btn').click(function() {
-        $(this).css('display','none')
+        $(this).css('display' , 'none')
         $('.select').css('display', 'flex');
         x = true
     });
@@ -112,9 +112,9 @@ function generateSudoku() {
     const updateTimer = () => {
         saniye++
         let zaman = document.querySelector('#time')
-        zaman.textContent = time(saniye)
+        div.textContent = time(saniye)
     }
-    setInterval(updateTimer,1000)
+    zamanId = setInterval(updateTimer,1000)
 
     let icon = document.createElement('i')
     icon.setAttribute('class', 'fa-solid fa-pause')
@@ -402,9 +402,10 @@ const click = () => {
                                 }
                         }
                     }
-                    if(c != array[i][j] && c != undefined && c != li[j].innerHTML && li[j].innerHTML == '' ){
+                    if(c != array[i][j] && c != undefined && c != li[j].innerHTML  && li[j].innerHTML != array[i][j] ){
                         document.querySelectorAll('.fa-heart')[healt].style.color = 'rgb(181, 177, 177)'
                         healt += 1
+                        
                     }
                     if((isInsideli)){
                         for(let i = 0; i < 9; i++){
@@ -505,10 +506,13 @@ const click = () => {
         }
         if(healt === 3){
             c = undefined
+            let div = document.querySelector('#time')
+            saniye = 0
+            clearInterval(zamanId)
             $(document).ready(function() {
+                $('#controls .btn').css('display','block')
                 $('.container').css('display', 'none')
                 $('#controls').css('display', 'flex');
-                $('#controls .btn').css('display', 'flex');
                 healt = 0
             })
             
